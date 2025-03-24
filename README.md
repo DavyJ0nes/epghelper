@@ -38,11 +38,22 @@ confirming that it is installed and accessible.
 - **Usage**: `epghelper ls`
 - **Output**: Displays a table with the port, creation date, and size of each database.
 
+```
+❯ epghelper ls
+┌───────┬─────────────────────┬─────────┐
+│ PORT  │ CREATED AT          │ SIZE    │
+├───────┼─────────────────────┼─────────┤
+│ 57720 │ 2025-03-24 11:00:53 │ 40.8 MB │
+├───────┼─────────────────────┼─────────┤
+│       │ TOTAL               │ 40.8 MB │
+└───────┴─────────────────────┴─────────┘
+```
+
 ### `epghelper rm`
 - **Description**: Removes a specified database or all databases.
 - **Usage**:
   - Remove a specific database: `epghelper rm <port>`
-  - Remove all databases: `epghelper rm --all` or `epghelper rm -a`
+  - Remove all databases: `epghelper rm --all`
 - **Flags**:
   - `--all`, `-a`: Remove all databases.
 
@@ -50,6 +61,6 @@ confirming that it is installed and accessible.
 - **Description**: Connects to a specified database or the latest created database.
 - **Usage**:
   - Connect to a specific database: `epghelper connect <port>`
-  - Connect to the latest database: `epghelper connect --latest` or `epghelper connect -l`
+  - Connect to the latest database: `epghelper connect --latest
 - **Flags**:
   - `--latest`, `-l`: Connect to the latest created database.
