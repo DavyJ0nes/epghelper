@@ -170,7 +170,6 @@ func connect(cmd *cobra.Command, args []string) {
 			return
 		}
 		port = args[0]
-
 	}
 
 	// Construct the psql command with the specified port
@@ -276,8 +275,6 @@ func getConfirmation(message string) bool {
 
 	if response == "y" || response == "yes" {
 		return true
-	} else {
-		return false
 	}
-
+	return false
 }
