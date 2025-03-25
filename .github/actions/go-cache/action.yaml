@@ -1,0 +1,20 @@
+name: 'Go Cache'
+description: 'Configures a general Go cache'
+runs:
+  using: 'composite'
+  steps:
+  - name: Manage cache
+    uses: actions/cache@v4
+    with:
+      path: |
+        /home/runner/work/nothelp/nothelp/.sage/tools
+        /home/runner/work/nothelp/nothelp/.sage/bin
+        /home/runner/.cache/go-build
+        /home/runner/go/pkg/mod
+        /home/runner/go/bin
+        /home/runner/.ko/cache
+      # The setup-go key is: setup-go-${platform}-${arch}-${linuxVersion}go-${versionSpec}-${fileHash}
+      # The sage key is:${{ runner.os }}-${{ github.ref_name }}-${{ github.workflow }}-${{ github.job }}-${{ inputs.cacheKey }}-${{ inputs.go-version }}-${{ hashFiles('**/go.sum') }}
+      key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+      restore-keys: |
+        ${{ runner.os }}-go-
