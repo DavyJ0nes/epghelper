@@ -64,10 +64,11 @@ func list(_ *cobra.Command, _ []string) {
 
 	t := table.NewWriter()
 	t.SetOutputMirror(os.Stdout)
-	t.AppendHeader(table.Row{"Port", "Created at", "Size"})
+	t.AppendHeader(table.Row{"Port", "Created at", "Size", "URL"})
 	var totalSize int64
 	for _, db := range dbs {
-		t.AppendRow(table.Row{db.port, db.created.Format(time.DateTime), formatSize(db.size)})
+		url := fmt.Sprintf("postgresql://postgres:postgres@localhost:%s/postgres", db.port)
+		t.AppendRow(table.Row{db.port, db.created.Format(time.DateTime), formatSize(db.size), url})
 		totalSize += db.size
 	}
 	t.AppendSeparator()
