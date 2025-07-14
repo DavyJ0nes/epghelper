@@ -98,13 +98,16 @@ func remove(cmd *cobra.Command, args []string) {
 			fmt.Println("Aborted.")
 			return
 		}
+		var totalSize int64
 		for _, db := range dbEntries {
 			if err := os.RemoveAll(db.fullPath); err != nil {
 				fmt.Printf("failed to delete %s: %s\n", db.fullPath, err)
 				os.Exit(1)
 			}
 			fmt.Printf("Deleted %s\n", db.port)
+			totalSize += db.size
 		}
+		fmt.Printf("Saved disk space: %s\n", formatSize(totalSize))
 		return
 	}
 
